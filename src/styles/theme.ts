@@ -2,10 +2,10 @@ export const theme = {
     colors: {
         primary: '#010101',
         secondary: '#005b96',
-        white: '#fafafa',
+        white: '#a11616',
         lightGray: '#dddddd',
         gray: '#999999',
-        darkDray: '#333333'
+        darkGray: '#333333'
     },
     spacings: {
         small: '1rem',
