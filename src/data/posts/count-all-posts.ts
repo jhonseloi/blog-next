@@ -1,8 +1,7 @@
 import { POSTS_URL } from '@/src/config/app-config'
-import { fetchJson } from '@/src/utils/fetch-json'
 
-export const countAllPosts = async (query = ''): Promise<string> => {
-    const url = `${POSTS_URL}/count?${query}`
-    const numberOfPosts = await fetchJson<string>(url)
-    return numberOfPosts
+export const countAllPosts = async (): Promise<number> => {
+    const res = await fetch(`${POSTS_URL}/posts`)
+    const data = await res.json()
+    return data.length
 }
