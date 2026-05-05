@@ -36,7 +36,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-    const slug = ctx.params?.slug
+    const rawSlug = ctx.params?.slug
+    const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug
 
     if (!slug) {
         return { notFound: true }
