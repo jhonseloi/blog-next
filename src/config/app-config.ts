@@ -1,4 +1,4 @@
-export const API_URL = 'https://evening-retreat-45125.herokuapp.com/posts'
+export const API_URL = 'https://jsonplaceholder.typicode.com'
 export const POSTS_URL = `${API_URL}/posts`
 
 export const SITE_NAME = 'Meu Site'
