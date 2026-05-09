@@ -18,10 +18,10 @@ export default function HomePage({ posts }: HomePageProps) {
                 <Container>
                     {posts.map((post) => (
                         <PostCard
-                            key={post.id}
-                            id={post.id}
+                            key={post.slug}
+                            cover={post.cover.formats.small.url}
+                            slug={post.slug}
                             title={post.title}
-                            body={post.body}
                         />
                     ))}
                 </Container>
