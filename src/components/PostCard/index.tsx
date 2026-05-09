@@ -1,27 +1,21 @@
 import Link from 'next/link'
-import { Container, PostCardCover, PostCardHeading } from './styled'
 
 export type PostCardProps = {
-    slug: string
+    id: number
     title: string
-    cover: string
+    body: string
 }
 
-export const PostCard = ({slug, title, cover}: PostCardProps) => {
+export const PostCard = ({ id, title, body }: PostCardProps) => {
     return (
-        <Container>
-            <PostCardCover>
-                <Link href='/post/[slug]' as={`/post/${slug}`}>
-                    <a>
-                        <img src={cover} alt={title} />
-                    </a>
-                </Link>
-            </PostCardCover>
-            <PostCardHeading>
-                <Link href='/post/[slug]' as={`/post/${slug}`}>
-                    <a>{title}</a>
-                </Link>
-            </PostCardHeading>
-        </Container>
+        <div>
+            <h2>{title}</h2>
+
+            <p>{body}</p>
+
+            <Link href={`/post/${id}`}>
+                Ler post
+            </Link>
+        </div>
     )
 }

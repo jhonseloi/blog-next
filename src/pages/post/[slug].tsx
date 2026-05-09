@@ -1,4 +1,3 @@
-import { countAllPosts } from '@/src/data/posts/count-all-posts'
 import { getAllPosts } from '@/src/data/posts/get-all-posts'
 import { getPost } from '@/src/data/posts/get-post'
 import { PostData } from '@/src/domain/posts/post'
@@ -11,8 +10,8 @@ export type DynamicPostProps = {
 const DynamicPost = ({ post }: DynamicPostProps) => {
     return (
         <>
-            <p>{post.title}</p>
-            <p dangerouslySetInnerHTML={{ __html: post.content }} />
+            <h1>{post.title}</h1>
+            <p>{post.body}</p>
         </>
     )
 }
@@ -20,33 +19,37 @@ const DynamicPost = ({ post }: DynamicPostProps) => {
 export default DynamicPost
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const numberOfPosts = await countAllPosts()
-    const posts = await getAllPosts(`_limit=${Number(numberOfPosts)}`)
+    const posts = await getAllPosts()
 
     return {
-        paths: posts.map((post) => {
-            return {
-                params: {
-                    slug: post.slug,
-                },
-            }
-        }),
+        paths: posts.map((post) => ({
+            params: {
+                slug: String(post.id),
+            },
+        })),
         fallback: false,
     }
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
     const rawSlug = ctx.params?.slug
-    const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug
+
+    const slug = Array.isArray(rawSlug)
+        ? rawSlug[0]
+        : rawSlug
 
     if (!slug) {
-        return { notFound: true }
+        return {
+            notFound: true,
+        }
     }
 
     const posts = await getPost(slug)
 
     if (!posts.length) {
-        return { notFound: true }
+        return {
+            notFound: true,
+        }
     }
 
     return {

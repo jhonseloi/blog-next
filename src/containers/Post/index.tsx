@@ -1,35 +1,15 @@
-import { Comments } from '@/src/components/Comments'
-import { Footer } from '@/src/components/Footer'
-import { Header } from '@/src/components/Header'
-import { Heading } from '@/src/components/Heading'
-import { MainContainer } from '@/src/components/MainContainer'
-import { PostContainer } from '@/src/components/PostContainer'
-import { PostCover } from '@/src/components/PostCover'
-import { PostDetails } from '@/src/components/PostDetails'
 import { PostData } from '@/src/domain/posts/post'
+import { MainContainer } from '@/src/components/MainContainer'
 
 export type PostProps = {
     post: PostData
 }
 
-export const Post = ({ post }: PostProps) => {
+export default function Post({ post }: PostProps) {
     return (
-        <>
-            <Header />
-
-            <MainContainer>
-                <Heading>{post.title}</Heading>
-                <PostCover coverUrl={post.cover.formats.large.url} alt={post.title} />
-                <PostDetails
-                    author={post.author.name}
-                    category={post.category.name}
-                    date={post.created_at}
-                />
-                <PostContainer content={post.content} />
-                <Comments title={post.title} slug={post.slug} />
-            </MainContainer>
-
-            <Footer />
-        </>
+        <MainContainer>
+            <h1>{post.title}</h1>
+            <p>{post.body}</p>
+        </MainContainer>
     )
 }

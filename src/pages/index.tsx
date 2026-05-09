@@ -7,16 +7,16 @@ export type HomeProps = {
     posts: PostData[]
 }
 
-export default function Home({posts}: HomeProps) {
-    return (
-        <HomePage posts={posts} />
-    )
+export default function Home({ posts }: HomeProps) {
+    return <HomePage posts={posts} />
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const posts = (await getAllPosts()).slice(0, 30)
+    const posts = await getAllPosts()
 
     return {
-        props: { posts },
+        props: {
+            posts,
+        },
     }
 }
