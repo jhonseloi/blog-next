@@ -13,12 +13,20 @@ export const getAllPosts = async (): Promise<PostData[]> => {
     const posts = await fetchJson<JsonPlaceholderPost[]>(POSTS_URL)
 
     return posts.slice(0, 30).map((post) => ({
-        userId: post.userId,
         id: post.id,
         title: post.title,
-        body: post.body,
         slug: String(post.id),
         content: post.body,
+        created_at: '',
+        updated_at: '',
+        created_by: {
+            firstname: '',
+            lastname: '',
+        },
+        updated_by: {
+            firstname: '',
+            lastname: '',
+        },
         author: {
             name: `Autor ${post.userId}`,
         },

@@ -18,13 +18,21 @@ export type PostCategory = {
 }
 
 export type PostData = {
-    userId: number
-    id: number
-    title: string
-    body: string
-    slug: string
-    content: string
+    id: number,
+    title: string,
+    slug: string,
+    content: string,
     author: PostAuthor
-    category: PostCategory
-    cover: PostCover
+    category: PostCategory,
+    created_by: {
+        firstname: string
+        lastname: string
+    },
+    updated_by: {
+        firstname: string
+        lastname: string
+    },
+    created_at: string,
+    updated_at: string,
+    cover: PostCover,
 }
