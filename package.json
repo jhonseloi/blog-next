@@ -7,13 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy:static": "next build",
-    "postbuild": "next-on-netlify"
+    "deploy:static": "next build"
   },
   "dependencies": {
     "disqus-react": "^1.1.7",
     "next": "16.2.3",
-    "next-on-netlify": "^3.0.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "remark": "^15.0.1",
