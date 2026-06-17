@@ -17,7 +17,7 @@ export default function DynamicPost({ post }: DynamicPostProps) {
         return <div>Página ainda carregando, por favor aguarde...</div>
     }
 
-    if (!post) {
+    if (!post?.title) {
         return <Error statusCode={404} />
     }
 

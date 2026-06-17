@@ -1,5 +1,4 @@
 import HomePage from '@/src/containers/HomePage'
-import { countAllPosts } from '@/src/data/posts/count-all-posts'
 import { getAllPosts } from '@/src/data/posts/get-all-posts'
 import { PaginationData } from '@/src/domain/posts/pagination'
 import { PostData } from '@/src/domain/posts/post'
@@ -39,7 +38,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
     const page = Number(params[0])
     const category = params[1] || ''
-    
+
     const postsPerPage = 6
     const startFrom = (page - 1) * postsPerPage
     const nextPage = page + 1
@@ -51,7 +50,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         startFrom + postsPerPage,
     )
     const numberOfPosts = allPosts.length
-    
+
     const pagination: PaginationData = {
         nextPage,
         numberOfPosts,
